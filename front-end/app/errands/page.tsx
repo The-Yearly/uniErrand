@@ -31,5 +31,6 @@ export default function Explore() {
             </div>
         <ErrandGrid/>
     </div>
+    
 );
 }

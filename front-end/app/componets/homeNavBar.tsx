@@ -6,7 +6,7 @@ import { CircleUserRound } from "lucide-react";
 import { useState,useEffect } from "react";
 import {motion,AnimatePresence} from "framer-motion"
 export default function Navbar(){
-    const [showMenu,setShowMenu]=useState(false)
+    const [showMenu,setShowMenu]=useState(true)
     const [expandMenu,setExpandMenu]=useState(false)
     useEffect(()=>{
         const checkWidth = () => setShowMenu(window.innerWidth < 780)
@@ -20,7 +20,7 @@ export default function Navbar(){
                 <Link href={"/"}><Logo/></Link>
                 {!showMenu?<div className="flex items-center md:space-x-10">
                 <p className="text-xl hover:text-sky-300 border-sky-300 transition-all">About</p>
-                <Link href={"/explore"} className="text-xl hover:text-sky-300 border-sky-300 transition-all">Explore</Link>
+                <Link href={"/errands"} className="text-xl hover:text-sky-300 border-sky-300 transition-all">Errands</Link>
                 <Link href={"/authentication"}><CircleUserRound strokeWidth={1.25} className="w-10 h-10 hover:text-sky-300 transition-all"/></Link>
                 </div>
                 :<button onClick={()=>setExpandMenu(!expandMenu)}>{showMenu?<Menu/>:<X/>}</button>}
@@ -35,7 +35,7 @@ export default function Navbar(){
 
                     className="w-full h-fit rounded-2xl absolute flex items-center flex-col z-40 bg-white">
                 <div className="flex mt-5 items-center"><Info className="w-10 h-10" strokeWidth={1.25}/><p className="ml-3 text-xl hover:text-sky-300 hover:border-b-2 border-sky-300 transition-all">About</p></div>
-                <div className="flex mt-5 items-center"><Compass className="w-10 h-10" strokeWidth={1.25}/><p className="ml-3 text-xl hover:text-sky-300 hover:border-b-2 border-sky-300 transition-all">Explore</p></div>
+                <div className="flex mt-5 items-center"><Compass className="w-10 h-10" strokeWidth={1.25}/><p className="ml-3 text-xl hover:text-sky-300 hover:border-b-2 border-sky-300 transition-all">Errands</p></div>
                 <Link className="my-3 flex items-center" href={"/"}><CircleUserRound strokeWidth={1.25} className="w-10 h-10 hover:text-sky-300 transition-all"/><p className="ml-3 text-xl">Login/Sign-Up</p></Link>
                 </motion.div>
             }

@@ -1,10 +1,11 @@
 import Image from "next/image"
 import myPhoto from "@/public/myPhoto.jpeg"
 import { Star,StarHalf } from "lucide-react"
-import {motion} from "framer-motion"
+import {AnimatePresence, motion} from "framer-motion"
 export default function UserCard(props:{user:any}){
     return(
-        <motion.div whileHover={{y:-15}} className="flex mt-5 items-start gap-4 p-4 border rounded-lg shadow-sm bg-white w-full max-w-xl">
+        <AnimatePresence>
+        <motion.div layout exit={{opacity:1,y:20}} whileInView={{opacity:1,y:-20}}  transition={{ duration: 0.8,bounce:0.4, type: "spring" }} initial={{opacity:0,y:0}} whileHover={{y:-15}}  viewport={{ amount: 0.8 }} className="flex items-start gap-4 p-4 border rounded-lg shadow-sm bg-white w-full max-w-xl">
         <Image
             src={myPhoto}
             alt="Profile picture"
@@ -30,5 +31,6 @@ export default function UserCard(props:{user:any}){
                 </div>
         </div>
         </motion.div>
+        </AnimatePresence>
     )
 }

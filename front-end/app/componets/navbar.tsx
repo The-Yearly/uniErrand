@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
-  const [showMenu, setShowMenu] = useState(false);
+  const [showMenu, setShowMenu] = useState(true);
   const [expandMenu, setExpandMenu] = useState(false);
 
   useEffect(() => {
@@ -28,19 +28,19 @@ export default function Navbar() {
           {!showMenu && (
             <>
               <Link
-                href="/explore"
+                href="/profile/dashboard"
                 className="text-base font-medium hover:text-sky-500 transition"
               >
                 Dashboard
               </Link>
               <Link
-                href="/explore"
+                href="/errands"
                 className="text-base font-medium hover:text-sky-500 transition"
               >
-                Explore
+                Errands
               </Link>
               <Link
-                href="/explore"
+                href="/profile/postTask"
                 className="text-base font-medium hover:text-sky-500 transition"
               >
                 Post a Task
@@ -77,13 +77,13 @@ export default function Navbar() {
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="fixed top-0 right-0 h-full w-[70vw] max-w-sm bg-white shadow-lg z-40 px-6 py-10 flex flex-col space-y-6"
           >
-            <Link href="/explore" onClick={() => setExpandMenu(false)} className="text-lg font-semibold text-gray-700 hover:text-sky-500 transition">
+            <Link href="/errands" onClick={() => setExpandMenu(false)} className="text-lg font-semibold text-gray-700 hover:text-sky-500 transition">
               Dashboard
             </Link>
-            <Link href="/explore" onClick={() => setExpandMenu(false)} className="text-lg font-semibold text-gray-700 hover:text-sky-500 transition">
-              Explore
+            <Link href="/errands" onClick={() => setExpandMenu(false)} className="text-lg font-semibold text-gray-700 hover:text-sky-500 transition">
+              errands
             </Link>
-            <Link href="/explore" onClick={() => setExpandMenu(false)} className="text-lg font-semibold text-gray-700 hover:text-sky-500 transition">
+            <Link href="/profile/postTask" onClick={() => setExpandMenu(false)} className="text-lg font-semibold text-gray-700 hover:text-sky-500 transition">
               Post a Task
             </Link>
             <div className="flex items-center space-x-3 mt-10">

@@ -2,6 +2,7 @@
 import { Errands } from "@/utils/types"
 import ErrandCard from "./errandCard";
 import {motion } from "framer-motion"
+import { Errandvarients } from "@/utils/types";
 export default function ErrandGrid(){
     const errands: Errands[] = [
     {
@@ -64,7 +65,7 @@ export default function ErrandGrid(){
 
     return(
         <motion.div initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{duration:0.4,ease:"easeIn"}} className="w-full max-w-[90rem] gap-6 grid grid-cols-1 mt-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            {errands.map((errand,i)=><ErrandCard key={i} errand={errand}/>)}
+            {errands.map((errand,i)=><ErrandCard key={i} errand={errand} varient={Errandvarients.exploreCard}/>)}
         </motion.div>
     )
 }

@@ -1,4 +1,4 @@
-
+export enum Errandvarients{exploreCard="ExploreCard",sideCard="SideCard"}
 export interface Errands{
     errand_id:number;
     errand_title:string;
