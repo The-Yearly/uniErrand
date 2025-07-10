@@ -145,7 +145,7 @@
 
             {isMobileMenuOpen && (
                 <div
-                className="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-20"
+                className="lg:hidden fixed inset-0 bg-opacity-50 z-20"
                 style={{ top: "80px" }}
                 onClick={() => setIsMobileMenuOpen(false)}
                 ></div>
