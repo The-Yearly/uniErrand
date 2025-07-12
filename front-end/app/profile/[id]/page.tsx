@@ -15,8 +15,6 @@
     import Image from "next/image"
     import Link from "next/link"
     import { useState } from "react"
-
-
     const recentJobs = [
     { id: 1, title: "Grocery Shopping", status: "completed", date: "2024-01-15", payment: "$25" },
     { id: 2, title: "Dog Walking", status: "in-progress", date: "2024-01-14", payment: "$15" },
