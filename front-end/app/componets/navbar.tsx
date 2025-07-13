@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import Link from "next/link";
 import Logo from "./logo";
 import { CircleUserRound, Bell, Menu, X } from "lucide-react";
@@ -62,7 +62,11 @@ export default function Navbar() {
               onClick={() => setExpandMenu(!expandMenu)}
               className="text-gray-700"
             >
-              {expandMenu ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
+              {expandMenu ? (
+                <X className="w-7 h-7" />
+              ) : (
+                <Menu className="w-7 h-7" />
+              )}
             </button>
           )}
         </div>
@@ -77,13 +81,25 @@ export default function Navbar() {
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="fixed top-0 right-0 h-full w-[70vw] max-w-sm bg-white shadow-lg z-40 px-6 py-10 flex flex-col space-y-6"
           >
-            <Link href="/errands" onClick={() => setExpandMenu(false)} className="text-lg font-semibold text-gray-700 hover:text-sky-500 transition">
+            <Link
+              href="/errands"
+              onClick={() => setExpandMenu(false)}
+              className="text-lg font-semibold text-gray-700 hover:text-sky-500 transition"
+            >
               Dashboard
             </Link>
-            <Link href="/errands" onClick={() => setExpandMenu(false)} className="text-lg font-semibold text-gray-700 hover:text-sky-500 transition">
+            <Link
+              href="/errands"
+              onClick={() => setExpandMenu(false)}
+              className="text-lg font-semibold text-gray-700 hover:text-sky-500 transition"
+            >
               errands
             </Link>
-            <Link href="/profile/postTask" onClick={() => setExpandMenu(false)} className="text-lg font-semibold text-gray-700 hover:text-sky-500 transition">
+            <Link
+              href="/profile/postTask"
+              onClick={() => setExpandMenu(false)}
+              className="text-lg font-semibold text-gray-700 hover:text-sky-500 transition"
+            >
               Post a Task
             </Link>
             <div className="flex items-center space-x-3 mt-10">
