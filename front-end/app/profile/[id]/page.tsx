@@ -44,7 +44,7 @@ const completedJobs = [
     id: 1,
     title: "Furniture Assembly",
     client: "Sarah M.",
-    rating: 5,
+    rating: 4.5,
     payment: "$40",
   },
   {
