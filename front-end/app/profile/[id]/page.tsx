@@ -22,20 +22,23 @@ import { useState } from "react";
 import RecentActivity from "../components/recentActivity";
 import RecentComplition from "../components/recentComplition";
 import UiCard from "../components/uiCard";
- export const renderStars = (rating: number)=> {
-    return [1, 2, 3, 4, 5].map((star: number) =>
-      star <= rating ? (
-        <Star key={star} size={14} className="fill-yellow-400 text-yellow-400" />
-      ) : rating >= star - 0.5 ? (
-        <div className="relative inline-block" key={star}>
-          <StarHalf size={14} className="absolute fill-yellow-400 text-yellow-400" />
-          <Star size={14} className="text-gray-300" />
-        </div>
-      ) : (
-        <Star key={star} size={14} className="text-gray-300" />
-      )
-    );
-  };
+export const renderStars = (rating: number) => {
+  return [1, 2, 3, 4, 5].map((star: number) =>
+    star <= rating ? (
+      <Star key={star} size={14} className="fill-yellow-400 text-yellow-400" />
+    ) : rating >= star - 0.5 ? (
+      <div className="relative inline-block" key={star}>
+        <StarHalf
+          size={14}
+          className="absolute fill-yellow-400 text-yellow-400"
+        />
+        <Star size={14} className="text-gray-300" />
+      </div>
+    ) : (
+      <Star key={star} size={14} className="text-gray-300" />
+    ),
+  );
+};
 export interface Job {
   id: number;
   title: string;
@@ -140,10 +143,28 @@ const completedJobs: CompletedJob[] = [
 ];
 
 const statsData: StatData[] = [
-  { title: "Jobs Posted", value: "12", change: "+2", trend: "up", color: "blue" },
+  {
+    title: "Jobs Posted",
+    value: "12",
+    change: "+2",
+    trend: "up",
+    color: "blue",
+  },
   { title: "Completed", value: "8", change: "+1", trend: "up", color: "green" },
-  { title: "Total Earned", value: "$340", change: "+$85", trend: "up", color: "yellow" },
-  { title: "Avg Rating", value: "4.8", change: "+0.2", trend: "up", color: "purple" },
+  {
+    title: "Total Earned",
+    value: "$340",
+    change: "+$85",
+    trend: "up",
+    color: "yellow",
+  },
+  {
+    title: "Avg Rating",
+    value: "4.8",
+    change: "+0.2",
+    trend: "up",
+    color: "purple",
+  },
 ];
 
 const Dashboard: React.FC = () => {
@@ -151,32 +172,53 @@ const Dashboard: React.FC = () => {
 
   const [activeSection, setActiveSection] = useState<string>("overview");
 
-
-
-
-
- 
   const StatCard: React.FC<{ stat: StatData }> = ({ stat }) => {
     const colorConfig = {
-      blue: { bg: "bg-gradient-to-br from-blue-50 to-blue-100", text: "text-blue-600", icon: "text-blue-500" },
-      green: { bg: "bg-gradient-to-br from-emerald-50 to-emerald-100", text: "text-emerald-600", icon: "text-emerald-500" },
-      yellow: { bg: "bg-gradient-to-br from-amber-50 to-amber-100", text: "text-amber-600", icon: "text-amber-500" },
-      purple: { bg: "bg-gradient-to-br from-purple-50 to-purple-100", text: "text-purple-600", icon: "text-purple-500" },
+      blue: {
+        bg: "bg-gradient-to-br from-blue-50 to-blue-100",
+        text: "text-blue-600",
+        icon: "text-blue-500",
+      },
+      green: {
+        bg: "bg-gradient-to-br from-emerald-50 to-emerald-100",
+        text: "text-emerald-600",
+        icon: "text-emerald-500",
+      },
+      yellow: {
+        bg: "bg-gradient-to-br from-amber-50 to-amber-100",
+        text: "text-amber-600",
+        icon: "text-amber-500",
+      },
+      purple: {
+        bg: "bg-gradient-to-br from-purple-50 to-purple-100",
+        text: "text-purple-600",
+        icon: "text-purple-500",
+      },
     };
-    
+
     const config = colorConfig[stat.color];
-    
+
     return (
-      <div className={`${config.bg} rounded-xl p-4 border border-white/50 shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer group`}>
+      <div
+        className={`${config.bg} rounded-xl p-4 border border-white/50 shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer group`}
+      >
         <div className="flex items-center justify-between mb-2">
           <p className="text-sm font-medium text-gray-600">{stat.title}</p>
-          <div className={`flex items-center gap-1 ${config.icon} group-hover:scale-110 transition-transform`}>
-            {stat.trend === "up" ? <ArrowUpRight size={16} /> : <ArrowDownRight size={16} />}
+          <div
+            className={`flex items-center gap-1 ${config.icon} group-hover:scale-110 transition-transform`}
+          >
+            {stat.trend === "up" ? (
+              <ArrowUpRight size={16} />
+            ) : (
+              <ArrowDownRight size={16} />
+            )}
           </div>
         </div>
         <div className="flex items-end justify-between">
           <p className={`text-2xl font-bold ${config.text}`}>{stat.value}</p>
-          <p className={`text-xs font-medium ${config.text} opacity-75`}>{stat.change}</p>
+          <p className={`text-xs font-medium ${config.text} opacity-75`}>
+            {stat.change}
+          </p>
         </div>
       </div>
     );
@@ -195,8 +237,6 @@ const Dashboard: React.FC = () => {
       setIsMobileMenuOpen(false);
     }
   };
-
-
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-100/50">
@@ -225,7 +265,10 @@ const Dashboard: React.FC = () => {
                           : "hover:bg-gray-50 text-gray-600 hover:text-gray-900"
                       }`}
                     >
-                      <IconComponent size={20} className="group-hover:scale-110 transition-transform" />
+                      <IconComponent
+                        size={20}
+                        className="group-hover:scale-110 transition-transform"
+                      />
                       <span className="font-medium">{item.label}</span>
                     </button>
                   );
@@ -233,17 +276,22 @@ const Dashboard: React.FC = () => {
               </nav>
 
               <div className="mt-auto pt-6 border-t border-gray-200">
-                <button 
-                  onClick={() => console.log('Settings clicked')}
+                <button
+                  onClick={() => console.log("Settings clicked")}
                   className="flex items-center gap-3 px-4 py-3 w-full rounded-xl hover:bg-gray-50 text-gray-600 hover:text-gray-900 transition-all group"
                 >
-                  <Settings size={20} className="group-hover:rotate-90 transition-transform duration-300" />
+                  <Settings
+                    size={20}
+                    className="group-hover:rotate-90 transition-transform duration-300"
+                  />
                   <span className="font-medium">Settings</span>
                 </button>
               </div>
             </div>
           </aside>
-          <aside className={`lg:hidden fixed left-0 z-30 w-80 bg-white/95 backdrop-blur-md shadow-2xl border-r border-white/50 transform transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"} top-0 bottom-0`}>
+          <aside
+            className={`lg:hidden fixed left-0 z-30 w-80 bg-white/95 backdrop-blur-md shadow-2xl border-r border-white/50 transform transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"} top-0 bottom-0`}
+          >
             <div className="p-6 flex flex-col h-full">
               <div className="flex justify-between items-center mb-8">
                 <h2 className="text-xl font-bold text-gray-800">Menu</h2>
@@ -295,14 +343,14 @@ const Dashboard: React.FC = () => {
                 <span className="font-medium">Menu</span>
               </button>
               <div className="flex items-center gap-2">
-                <button 
+                <button
                   className="p-2 bg-white/80 backdrop-blur-sm rounded-xl shadow-sm border border-white/50 hover:bg-white/90 transition-all relative"
                   aria-label="Notifications"
                 >
                   <Bell size={20} />
                   <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-pulse"></span>
                 </button>
-                <button 
+                <button
                   className="p-2 bg-white/80 backdrop-blur-sm rounded-xl shadow-sm border border-white/50 hover:bg-white/90 transition-all"
                   aria-label="Settings"
                 >
@@ -313,8 +361,12 @@ const Dashboard: React.FC = () => {
 
             <div className="max-w-7xl mx-auto">
               <div className="mb-8">
-                <h1 className="text-3xl font-bold text-gray-900 mb-2">Welcome back, John! 👋</h1>
-                <p className="text-gray-600">Here's what's happening with your gigs today.</p>
+                <h1 className="text-3xl font-bold text-gray-900 mb-2">
+                  Welcome back, John! 👋
+                </h1>
+                <p className="text-gray-600">
+                  Here's what's happening with your gigs today.
+                </p>
               </div>
               <section className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
                 {statsData.map((stat, index) => (
@@ -323,11 +375,11 @@ const Dashboard: React.FC = () => {
               </section>
               <section className="grid grid-cols-1 xl:grid-cols-3 gap-6 mb-8">
                 <div className="xl:col-span-1">
-                  <UiCard/>
+                  <UiCard />
                 </div>
-                <RecentActivity recentJobs={recentJobs}/>
+                <RecentActivity recentJobs={recentJobs} />
               </section>
-                <RecentComplition completedJobs={completedJobs}/>
+              <RecentComplition completedJobs={completedJobs} />
             </div>
           </main>
         </div>
