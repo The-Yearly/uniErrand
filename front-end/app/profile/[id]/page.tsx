@@ -14,9 +14,6 @@ import {
   Settings,
   ArrowUpRight,
   ArrowDownRight,
-  MapPin,
-  Phone,
-  Mail,
 } from "lucide-react";
 import { useState } from "react";
 import RecentActivity from "../components/recentActivity";
