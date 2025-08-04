@@ -164,7 +164,7 @@ const statsData: StatData[] = [
   },
 ];
 
-const Dashboard: React.FC = () => {
+const Dashboard=() => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
 
   const [activeSection, setActiveSection] = useState<string>("overview");
@@ -238,7 +238,7 @@ const Dashboard: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-100/50">
       <div className="pt-6">
-        <div className="flex">
+        <div className="flex mt-12">
           <aside className="hidden lg:block w-72 bg-white/80 backdrop-blur-md shadow-xl border-r border-white/50 lg:rounded-r-3xl mx-4 my-2">
             <div className="p-6 flex flex-col h-full">
               <div className="text-center mb-8">
